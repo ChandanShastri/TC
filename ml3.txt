@@ -1,0 +1,20 @@
+import pandas as pd
+from pandas import DataFrame
+df_tennis = DataFrame.from_csv('C:\\Users\\Dr.Thyagaraju\\Desktop\\Data\\PlayTennis.csv')
+df_tennis
+
+def entropy(probs): # Calulate the Entropy of given probability
+import math
+return sum( [-prob*math.log(prob, 2) for prob in probs] )
+def entropy_of_list(a_list): # Entropy calculation of list of discrete values (YES/NO)
+from collections import Counter
+cnt = Counter(x for x in a_list)
+
+print("No and Yes Classes:",a_list.name,cnt)
+num_instances = len(a_list)*1.0
+probs = [x / num_instances for x in cnt.values()]
+return entropy(probs) # Call Entropy:
+# The initial entropy of the YES/NO attribute for our dataset.
+#print(df_tennis['PlayTennis'])
+total_entropy = entropy_of_list(df_tennis['PlayTennis'])
+print("Entropy of given PlayTennis Data Set:",total_entropy)
